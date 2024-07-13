@@ -22,6 +22,7 @@ html {
     box-sizing: border-box;
 }
 
+/* Responsive */
 .grid {
     width: 1460px;
     max-width: 100%;
@@ -35,6 +36,24 @@ html {
 .grid__row {
     display: flex;
     flex-wrap: wrap;
+    /* Tạo khoảng cách giữa các column */
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+/* Test responsive */
+.grid__column-2 {
+    /* Tạo khoảng cách giữa các column */
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 16.6666667%;
+}
+
+.grid__column-10 {
+    /* Tạo khoảng cách giữa các column */
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 83.3333333%;
 }
 
 /* Animation */
