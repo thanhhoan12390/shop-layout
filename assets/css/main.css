@@ -10,12 +10,99 @@
     list-style: none;
     padding-left: 0;
     margin: 4px 0 0 0;
+    display: flex;
 }
 
 .header__navbar-item {
     margin: 0px 8px;
     position: relative;
     min-height: 26px;
+}
+
+.header__navbar-user {
+    display: flex;
+    justify-items: center;
+
+    position: relative;
+}
+
+.header__navbar-user-img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header__navbar-user-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.header__navbar-user:hover .header__navbar-user-menu {
+    display: block;
+}
+
+.header__navbar-user-menu {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 4px);
+    right: 0;
+    padding-left: 0;
+    list-style: none;
+    width: 160px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 2px #e0e0e0;
+    display: none;
+}
+
+.header__navbar-user-menu::before {
+    content: "";
+    display: block;
+    border-width: 12px 16px;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    right: 18px;
+    top: -20px;
+}
+
+.header__navbar-user-menu::after {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 72%;
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.header__navbar-user-item--separate {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.header__navbar-user-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    padding: 8px 16px;
+    display: block;
+    /* vì thẻ <a> không có thuộc tính display "block" nên padding không thể đẩy phần tử to ra */
+}
+
+.header__navbar-user-item a:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.header__navbar-user-item a:last-child {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.header__navbar-user-item a:hover {
+    background-color: #fafafa;
 }
 
 .header__navbar-item--has-qr:hover .header__qr {
@@ -30,7 +117,7 @@
 .header__navbar-item,
 .header__navbar-item-link {
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--white-color);
     text-decoration: none;
     font-weight: 300;
@@ -39,7 +126,7 @@
 .header__navbar-item,
 .header__navbar-item-link,
 .header__navbar-icon-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
 }
 
@@ -57,6 +144,10 @@
 .header_navbar-icon-link {
     color: var(--white-color);
     text-decoration: none;
+}
+
+.header_navbar-icon-link:nth-child(2) {
+    margin-left: 3px;
 }
 
 .header__navbar-item--separate::after {
@@ -124,13 +215,15 @@
 /* Notification pop up  */
 .header__notify {
     position: absolute;
+    z-index: 1;
     top: 118%;
     right: 0;
     width: 404px;
-    border: 1px solid #d3d3d3;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: var(--white-color);
     cursor: default;
-    transform-origin: calc(100% - 20px) top; /* Định được tâm của hành động tranform*/
+    transform-origin: calc(100% - 32px) top; /* Định được tâm của hành động tranform*/
     animation: headerNotifyGrowth ease-in 0.2s;
     /* Hỗ trợ trên nhiều trình duyệt */
     -webkit-animation: headerNotifyGrowth ease-in 0.2s;
@@ -389,6 +482,11 @@
 
 .header__logo {
     width: 200px;
+}
+
+.header__logo-link {
+    color: transparent;
+    text-decoration: none;
 }
 
 .header__logo-img {
@@ -751,4 +849,64 @@
     line-height: 38px; /* Cho line-height bằng thẻ cha phần tử sẽ tự căng giữa */
     color: var(--text-color);
     display: block;
+}
+
+/* App Container */
+.app__container {
+    background-color: #f5f5f5;
+}
+
+.category {
+    border-radius: 2px;
+    background-color: var(--white-color);
+}
+
+.category__heading {
+    color: var(--text-color);
+    font-size: 1.7rem;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.category__heading-icon {
+    font-size: 1.4rem;
+    margin-right: 4px;
+    position: relative;
+    top: -1px;
+}
+
+.category-list {
+    padding: 0 0 8px 0;
+    list-style: none;
+    margin-left: 9px;
+}
+
+.category-item--active .category-item__link {
+    color: var(--primary-color);
+}
+
+.category-item--active .category-item__link::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    border: 4px solid;
+    transform: translateY(calc(-50% - 1px));
+    border-color: transparent transparent transparent var(--primary-color);
+}
+
+.category-item__link {
+    position: relative;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 4px 16px;
+    display: block;
+    transition: right linear 0.1s; /* Định nghĩa chuyển động */
+    right: 0;
+}
+
+.category-item__link:hover {
+    right: -4px;
+    color: var(--primary-color);
 }
